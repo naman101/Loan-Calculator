@@ -1,0 +1,57 @@
+@import '~antd/dist/antd.min.css';
+
+.App{
+  font-family: 'Roboto', sans-serif;
+}
+
+@media only screen and (min-width: 601px){
+  .header{
+    position: sticky;
+    top: 0px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+
+  .output-container{
+    margin-top: 5%;
+  }
+
+  .output-content{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 2%;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .header{
+    position: sticky;
+    top: 0px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 25px;
+    font-weight: 500;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  .output-container{
+    margin-top: 15%;
+  }
+
+  .output-content{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 4%;
+  }
+}
