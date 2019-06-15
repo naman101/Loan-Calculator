@@ -10,18 +10,20 @@ function App() {
   const [inputMonths, updateMonths] = useState(6)
   const [interestRate, updateInterestRate] = useState('')
   const [monthlyPayment, updateMonthlyPayment] = useState('')
-
+  const [isFetching, updateFetching] = useState(true)
 
   useEffect(() => {
     const fetchLoan = () => {
+      updateFetching(true)
       axios.get(`https://ftl-frontend-test.herokuapp.com/interest?amount=${inputAmount}&numMonths=${inputMonths}`)
         .then(function (response) {
           updateInterestRate(response.data.interestRate)
           updateMonthlyPayment(response.data.monthlyPayment.amount)
+          updateFetching(false)
         })
     }
     fetchLoan()
-  })
+  }, [inputAmount, inputMonths])
 
 
   const onChangeAmount = value => {
@@ -60,15 +62,31 @@ function App() {
       <div className="output-container">
         <div className="output-content">
           Interest Rate
-          <AnimateOnChange durationOut="500">
-            {': ' + interestRate + '%'}
-          </AnimateOnChange>
+          {
+            isFetching ?
+            (
+              <span>: Loading...</span>
+            ) :
+            (
+              <AnimateOnChange>
+                {': ' + interestRate + '%'}
+              </AnimateOnChange>
+            )
+          }
         </div>
         <div className="output-content">
           Monthly Payment
-          <AnimateOnChange durationOut="500">
-            {': $' + monthlyPayment}
-          </AnimateOnChange>
+          {
+            isFetching ?
+            (
+              <span>: Loading...</span>
+            ) :
+            (
+              <AnimateOnChange>
+                {': $' + monthlyPayment}
+              </AnimateOnChange>
+            )
+          }
         </div>
       </div>
     </div>
