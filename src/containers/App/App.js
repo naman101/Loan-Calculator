@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
-import { AnimateOnChange } from 'react-animation'
 import InputValue from '../../components/InputValue'
 import axios from 'axios'
+
 
 function App() {
 
@@ -61,30 +61,46 @@ function App() {
       />
       <div className="output-container">
         <div className="output-content">
-          Interest Rate
           {
             isFetching ?
             (
-              <span>: Loading...</span>
+              <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
             ) :
             (
-              <AnimateOnChange>
-                {': ' + interestRate + '%'}
-              </AnimateOnChange>
+              <React.Fragment>
+                <div className="output-header">
+                  INTEREST RATE
+                </div>
+                <div>
+                  {interestRate + '%'}
+                </div>
+              </React.Fragment>
             )
           }
         </div>
         <div className="output-content">
-          Monthly Payment
           {
             isFetching ?
             (
-              <span>: Loading...</span>
+              <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
             ) :
             (
-              <AnimateOnChange>
-                {': $' + monthlyPayment}
-              </AnimateOnChange>
+              <React.Fragment>
+                <div className="output-header">
+                  MONTHLY PAYMENTS
+                </div>
+                <div>
+                  {'$' + monthlyPayment}
+                </div>
+              </React.Fragment>
             )
           }
         </div>
